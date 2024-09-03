@@ -2,8 +2,9 @@ package com.example.Testcases;
 
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
-import com.example.pageObject.LoginPage;
-import com.example.Utils.RetryAnalyzer; 
+import com.example.Utils.RetryAnalyzer;
+
+import pages.LoginPage; 
 
 public class Login extends BaseTest {
 

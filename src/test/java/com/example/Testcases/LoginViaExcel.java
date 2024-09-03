@@ -1,9 +1,11 @@
 package com.example.Testcases;
 
-import com.example.Utils.ExcelUtils;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import com.example.pageObject.LoginPageExcel;
+
+import com.example.Utils.ExcelUtils;
+
+import pages.LoginPageExcel;
 
 public class LoginViaExcel extends BaseTest {
 

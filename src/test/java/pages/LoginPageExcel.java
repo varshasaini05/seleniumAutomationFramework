@@ -1,4 +1,4 @@
-package com.example.pageObject;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

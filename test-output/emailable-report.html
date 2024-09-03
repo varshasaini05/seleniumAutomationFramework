@@ -9,34 +9,27 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Selenium Automation Framework</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">31,834</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Selenium Automation Framework</a></td><td class="num">1</td><td class="num attn">1</td><td class="num">0</td><td class="num attn">1</td><td class="num">23,668</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Selenium Automation Framework &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.example.Testcases.LoginViaExcel</td><td><a href="#m0">loginTest</a></td><td rowspan="1">1725013028078</td><td rowspan="1">15999</td></tr><tr><th colspan="4">Selenium Automation Framework &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.example.Testcases.LoginViaExcel</td><td><a href="#m1">loginTest</a></td><td rowspan="1">1725013021481</td><td rowspan="1">6589</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Selenium Automation Framework &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">com.example.Testcases.Login</td><td><a href="#m0">afterMethod</a></td><td rowspan="1">1725280693643</td><td rowspan="1">16</td></tr><tr class="failedodd"><td rowspan="1">com.example.Testcases.LoginViaExcel</td><td><a href="#m1">afterMethod</a></td><td rowspan="1">1725280702724</td><td rowspan="1">0</td></tr><tr><th colspan="4">Selenium Automation Framework &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.example.Testcases.LoginViaExcel</td><td><a href="#m2">loginTest</a></td><td rowspan="1">1725280702546</td><td rowspan="1">0</td></tr><tr><th colspan="4">Selenium Automation Framework &#8212; skipped (configuration methods)</th></tr><tr class="skippedeven"><td rowspan="1">com.example.Testcases.LoginViaExcel</td><td><a href="#m3">afterMethod</a></td><td rowspan="1">1725280702738</td><td rowspan="1">-1725280702738</td></tr><tr><th colspan="4">Selenium Automation Framework &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">com.example.Testcases.LoginViaExcel</td><td><a href="#m4">loginTest</a></td><td rowspan="1">1725280702733</td><td rowspan="1">0</td></tr><tr><th colspan="4">Selenium Automation Framework &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.example.Testcases.Login</td><td><a href="#m5">testLogin</a></td><td rowspan="1">1725280686855</td><td rowspan="1">6788</td></tr></tbody>
 </table>
-<h2>Selenium Automation Framework</h2><h3 id="m0">com.example.Testcases.LoginViaExcel#loginTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>varsha</td><td>Password@123</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;h1.post-title&quot;}
-  (Session info: chrome=128.0.6613.85)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.11.0&apos;, revision: &apos;040bc5406b&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.3&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d14b6414b47544a6da8767e569dce514, findElement {using=css selector, value=h1.post-title}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 128.0.6613.85, chrome: {chromedriverVersion: 128.0.6613.86 (3045ed680fda..., userDataDir: C:\Users\Varsha\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58208}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58208/devtoo..., se:cdpVersion: 128.0.6613.85, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d14b6414b47544a6da8767e569dce514
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-	at com.example.pageObject.LoginPageExcel.login(LoginPageExcel.java:33)
-	at com.example.Testcases.LoginViaExcel.loginTest(LoginViaExcel.java:41)
+<h2>Selenium Automation Framework</h2><h3 id="m0">com.example.Testcases.Login#afterMethod</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[TestResult name=testLogin status=SUCCESS method=Login.testLogin()[pri:0, instance:com.example.Testcases.Login@2892d68] output={null}]</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException: Cannot invoke &quot;com.aventstack.extentreports.ExtentTest.pass(String)&quot; because &quot;this.test&quot; is null
+	at com.example.Testcases.BaseTest.afterMethod(BaseTest.java:56)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 28 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.example.Testcases.LoginViaExcel#loginTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>student</td><td>Password123</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.example.Testcases.LoginViaExcel#afterMethod</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>[TestResult name=loginTest status=FAILURE method=LoginViaExcel.loginTest(java.lang.String,java.lang.String)[pri:0, instance:com.example.Testcases.LoginViaExcel@46cdf8bd] output={null}]</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException: Cannot invoke &quot;com.aventstack.extentreports.ExtentTest.fail(java.lang.Throwable)&quot; because &quot;this.test&quot; is null
+	at com.example.Testcases.BaseTest.afterMethod(BaseTest.java:54)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">com.example.Testcases.LoginViaExcel#loginTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>student</td><td>Password123</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.RuntimeException: ExtentReports instance is not initialized.
+	at com.example.Testcases.LoginViaExcel.loginTest(LoginViaExcel.java:37)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">com.example.Testcases.LoginViaExcel#afterMethod</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">com.example.Testcases.LoginViaExcel#loginTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>varsha</td><td>Password@123</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.NullPointerException: Cannot invoke &quot;com.aventstack.extentreports.ExtentTest.fail(java.lang.Throwable)&quot; because &quot;this.test&quot; is null
+	at com.example.Testcases.BaseTest.afterMethod(BaseTest.java:54)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 30 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">com.example.Testcases.Login#testLogin</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
