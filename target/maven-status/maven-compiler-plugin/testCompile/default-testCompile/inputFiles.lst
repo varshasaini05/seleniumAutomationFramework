@@ -4,6 +4,6 @@ C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\com\example\
 C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\com\example\Testcases\LoginViaExcel.java
 C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\com\example\Utils\ExcelUtils.java
 C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\com\example\Utils\RetryAnalyzer.java
-C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\pages\BasePage.java
-C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\pages\LoginPage.java
-C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\pages\LoginPageExcel.java
+C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\pageObjects\BasePage.java
+C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\pageObjects\LoginPage.java
+C:\Users\Varsha\eclipse-workspace\selenium_Automation\src\test\java\pageObjects\LoginPageExcel.java

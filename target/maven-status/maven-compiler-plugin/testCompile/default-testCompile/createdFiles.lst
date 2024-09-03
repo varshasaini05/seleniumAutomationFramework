@@ -1,10 +1,10 @@
 com\example\Testcases\Login.class
-pages\BasePage.class
 com\example\Testcases\LoginViaExcel.class
 com\example\Utils\ExcelUtils.class
 com\example\Utils\RetryAnalyzer.class
-pages\LoginPageExcel.class
+pageObjects\LoginPage.class
 com\example\Testcases\BaseTest.class
-pages\LoginPage.class
+pageObjects\BasePage.class
+pageObjects\LoginPageExcel.class
 com\example\Listener\ListenerTest.class
 com\example\Utils\ExcelUtils$1.class

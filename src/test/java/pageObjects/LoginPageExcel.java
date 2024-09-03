@@ -1,8 +1,7 @@
-package pages;
+package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
 import com.aventstack.extentreports.ExtentTest;
 
 public class LoginPageExcel extends BasePage {
@@ -54,5 +53,4 @@ public class LoginPageExcel extends BasePage {
 	            throw e; // Rethrow to ensure the test status is failed
 	        }
 	    }
-
 }

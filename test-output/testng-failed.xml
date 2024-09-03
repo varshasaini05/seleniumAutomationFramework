@@ -10,7 +10,7 @@
         <methods>
           <include name="tearDownExtent"/>
           <include name="setUpExtent"/>
-          <include name="loginTest" invocation-numbers="0"/>
+          <include name="loginTest" invocation-numbers="1"/>
           <include name="afterMethod"/>
           <include name="setUp"/>
         </methods>

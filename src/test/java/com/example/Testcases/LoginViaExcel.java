@@ -2,10 +2,9 @@ package com.example.Testcases;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+import com.aventstack.extentreports.ExtentTest;
 import com.example.Utils.ExcelUtils;
-
-import pages.LoginPageExcel;
+import pageObjects.LoginPageExcel;
 
 public class LoginViaExcel extends BaseTest {
 
@@ -33,13 +32,16 @@ public class LoginViaExcel extends BaseTest {
 
     @Test(dataProvider = "loginData")
     public void loginTest(String username, String password) throws InterruptedException {
-       
+        ExtentTest test = extent.createTest("Login Test");
         if (test == null) {
             test = extent.createTest("Login Test");
         }
+        
         driver.get("https://practicetestautomation.com/practice-test-login/");
 
         LoginPageExcel loginPageExcel = new LoginPageExcel(driver, test);
         loginPageExcel.login(username, password);
+        BaseTest.setTest(test);
+
     }
 }

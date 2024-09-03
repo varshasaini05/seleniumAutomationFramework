@@ -7,6 +7,7 @@
     <test name="Selenium Automation Framework">
         <classes>
             <class name="com.example.Testcases.Login" />
+            <class name="com.example.Testcases.LoginViaExcel" />
         </classes>
     </test>
 </suite>
