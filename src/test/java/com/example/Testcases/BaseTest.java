@@ -21,7 +21,7 @@ public class BaseTest {
 	protected WebDriver driver;
     protected static ExtentReports extent;
     private static ExtentTest test; 
-    String WebsiteURL = "https://practicetestautomation.com/practice-test-login/";
+    String WebsiteURL = "https://new-qa2-deployer.getglobalgroup.com/login";
 
     @BeforeSuite
     public void setUpExtent() {
@@ -40,10 +40,10 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() throws InterruptedException {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-        driver.get(WebsiteURL);
+    	 driver = new ChromeDriver();
+         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+         driver.manage().window().maximize();
+         driver.get(WebsiteURL);
     }
 
     @AfterMethod
