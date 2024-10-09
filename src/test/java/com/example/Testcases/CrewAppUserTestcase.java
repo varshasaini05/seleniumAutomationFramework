@@ -3,16 +3,16 @@ package com.example.Testcases;
 import java.util.Set;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
-import com.example.Utils.RetryAnalyzer;
+//import com.example.Utils.RetryAnalyzer;
 import pageObjects.DashboardPage;
 import pageObjects.LoginPage;
 import pageObjects.crewAppUsersPage;
 
 public class CrewAppUserTestcase extends BaseTest {
-	 @Test(retryAnalyzer = RetryAnalyzer.class)
+        @Test
 	    public void createUser() throws InterruptedException {
 			String Email="3_employee@mailinator.com";
-	    	String Password="Pass@123";
+	    	String Password="Pass@1234";
 	        ExtentTest test = extent.createTest("Create Crew App User Test");
 
 	    	 if (test != null) {
@@ -34,7 +34,7 @@ public class CrewAppUserTestcase extends BaseTest {
 	                    }
 	                }
 	                
-	                Thread.sleep(1000);
+	                Thread.sleep(500);
 	    	        dashboard.clickOnHambergerIcon();
 	                test.info("Click on hamburger Icon");
 	    	        dashboard.clickOnUsersOption();

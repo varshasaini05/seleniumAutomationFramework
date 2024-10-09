@@ -21,7 +21,7 @@ public class BaseTest {
 	protected WebDriver driver;
     protected static ExtentReports extent;
     private static ExtentTest test; 
-    String WebsiteURL = "https://new-qa2-deployer.getglobalgroup.com/login";
+    String WebsiteURL = "https://new-stage2-deployer.getglobalgroup.com/ccm-user";
 
     @BeforeSuite
     public void setUpExtent() {

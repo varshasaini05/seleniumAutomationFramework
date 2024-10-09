@@ -50,7 +50,7 @@ public class LoginPage extends BaseTest {
 	        	test.pass("Logged in Successfully!!!");
 	        	
 	        	String currentUrl = driver.getCurrentUrl();
-	        	String ExpectedUrl = "https://new-qa2-deployer.getglobalgroup.com/apps";
+	        	String ExpectedUrl = "https://new-stage2-deployer.getglobalgroup.com/apps";
 	        	Assert.assertEquals(currentUrl, ExpectedUrl);
 	        	
 	        } catch (AssertionError e) {

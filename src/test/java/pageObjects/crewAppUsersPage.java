@@ -1,7 +1,6 @@
 package pageObjects;
 
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import com.aventstack.extentreports.ExtentTest;
 import com.example.Testcases.BaseTest;
+
 
 public class crewAppUsersPage extends BaseTest{
 	  private ExtentTest test;
@@ -90,7 +90,10 @@ public class crewAppUsersPage extends BaseTest{
 	    @FindBy(xpath = "//div[@class='dropdown-menu open show']//input[@aria-label='Search']")
 	    private WebElement CurrentCountrySearchBar;
 	    
-	    @FindBy(xpath = "//button[@title='Current Step']")
+	    @FindBy(xpath = "//button[@title='Current State']//span[@class='caret']")
+	    private WebElement CurrentStateArrowButton;
+	    
+	    @FindBy(xpath = "//button[@title='Current State']")
 	    private WebElement CurrentState;
 	    
 	    @FindBy(xpath = "//input[@id='current_city']")
@@ -98,6 +101,18 @@ public class crewAppUsersPage extends BaseTest{
 	    
 	    @FindBy(xpath = "//input[@id='current_postal_code']")
 	    private WebElement CurrentPostalCode;
+	    
+	    @FindBy(xpath = "//input[@value='1']")
+	    private WebElement StatusActiveRadioButton;
+	    
+	    @FindBy(xpath = "//input[@id='profile_image']")
+	    private WebElement ChooseFileButton;
+	    
+	    @FindBy(xpath = "//button[normalize-space()='Submit']")
+	    private WebElement SubmitButton;
+	    
+	    @FindBy(xpath = "//a[normalize-space()='Cancel']")
+	    private WebElement CancelButton;
 	   
 	    
 	    public crewAppUsersPage(WebDriver driver, ExtentTest test) {
@@ -119,7 +134,7 @@ public class crewAppUsersPage extends BaseTest{
 	             String LastName = "Saini";
 	             LastNameField.sendKeys(LastName);
 	             test.info("Enter last name : " + LastName );
-	             String email="a@mailinator.com";
+	             String email="abc@mailinator.com";
 	             EmailField.sendKeys(email);
                  test.info("Enter Email : " + email);
                  
@@ -148,7 +163,7 @@ public class crewAppUsersPage extends BaseTest{
         	     phoneCode.sendKeys("+91");
 	             test.info("Enter phone code");
 	             phoneNumber.click();
-	             phoneNumber.sendKeys("8977478940");
+	             phoneNumber.sendKeys("8177478940");
 	             test.info("Enter phone number");
         		 
 	             TotalExperience.click();
@@ -156,6 +171,7 @@ public class crewAppUsersPage extends BaseTest{
 	             TotalExperience.sendKeys("4");
 	             test.info("Enter Total Experience in yrs");
 	        
+	             Thread.sleep(3000);
 	             TotalExperienceMonths.click();
 	             List<WebElement> options = driver.findElements(By.xpath("//div[@class='dropdown-menu open show']/ul[@class=\"dropdown-menu inner\"]/li/a"));
 	             // Iterate through the options
@@ -232,16 +248,29 @@ public class crewAppUsersPage extends BaseTest{
 	             test.info("Enter discipline 1");
 	             
 	             SubDiscipline1aField.click();
-	             Thread.sleep(2000);
-	             Select select = new Select(SubDiscipline1aField);
-	             select.selectByIndex(1);
-	             test.info("Enter discipline 1a");
+	             SubDiscipline1aField.sendKeys("Drilling");
+	             //button[@title=\"Sub Discipline 1a\"]/..//ul[@class=\"dropdown-menu inner\"]/li/a
+	             List<WebElement> discipline1a = driver.findElements(By.xpath("//li[@class='active']//a[@role='option']"));
+	             Thread.sleep(1000);
+	             //Iterate through the options
+	             for (WebElement option : discipline1a) {
+	                 if (option.getText().equals("Drilling")) {
+	                     // Use JavaScript to scroll the element into view
+	                     JavascriptExecutor js = (JavascriptExecutor) driver;
+	                     js.executeScript("arguments[0].scrollIntoView(true);", option);
+	                     option.click();
+	                     break;
+	                 }
+	             } 
+	             test.info("Enter sub Discipline 1a");
 	             
 	             Discipline2Field.click();
-	             List<WebElement> discipline2 = driver.findElements(By.xpath("//div[@class='dropdown-menu open show']/ul[@class=\"dropdown-menu inner\"]/li/a"));
+	             Discipline2Field.sendKeys("CBM");
+	             List<WebElement> discipline2 = driver.findElements(By.xpath("//button[@title=\"Discipline 2\"]/..//ul[@class=\"dropdown-menu inner\"]/li/a"));
+	             Thread.sleep(1000);
 	             // Iterate through the options
 	             for (WebElement option : discipline2) {
-	                 if (option.getText().equals("HSE")) {
+	                 if (option.getText().equals("CBM")) {
 	                     // Use JavaScript to scroll the element into view
 	                     JavascriptExecutor js = (JavascriptExecutor) driver;
 	                     js.executeScript("arguments[0].scrollIntoView(true);", option);
@@ -251,38 +280,105 @@ public class crewAppUsersPage extends BaseTest{
 	             }
 	             test.info("Enter discipline 2");
 	             
+	             Thread.sleep(5000);
+	             JavascriptExecutor jse = (JavascriptExecutor) driver;
+	             jse.executeScript("window.scrollTo(0, 0);");
+                 Thread.sleep(2000);
 	             SubDiscipline2aField.click();
-	             List<WebElement> subdiscipline2a = driver.findElements(By.xpath("//div[@class='dropdown-menu open show']/ul[@class=\"dropdown-menu inner\"]/li/a"));
-	             // Iterate through the options
-	             for (WebElement option : subdiscipline2a) {
-	                 if (option.getText().equals("Android")) {
+	             SubDiscipline2aField.sendKeys("Drilling");
+	             List<WebElement> discipline2a = driver.findElements(By.xpath("//li[@class='active']//a[@role='option']"));
+	             Thread.sleep(3000);
+	             //Iterate through the options
+	             for (WebElement option : discipline2a) {
+	                 if (option.getText().equals("Drilling")) {
 	                     // Use JavaScript to scroll the element into view
 	                     JavascriptExecutor js = (JavascriptExecutor) driver;
 	                     js.executeScript("arguments[0].scrollIntoView(true);", option);
 	                     option.click();
 	                     break;
 	                 }
-	             }
-	             test.info("Enter Discipline 2a");
-	             
+	             } 
+	             test.info("Enter sub Discipline 2a");
+           
+	             Thread.sleep(3000);
+	             JavascriptExecutor js = (JavascriptExecutor) driver;
+	             js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+
 	             CurrentAddressField.click();
 	             CurrentAddressField.sendKeys("South Extension");
 	             test.info("Enter Address");
 	             
 	             CurrentCountry.click();
 	             CurrentCountrySearchBar.sendKeys("Ind");
-        		 Thread.sleep(1000);
-        		 List <WebElement> country=driver.findElements(By.cssSelector("li[class='ui-menu-item'] a"));
-        		 for(WebElement option: country)
-        		 {
-        			if(option.getText().equalsIgnoreCase("India"))
-        			{
-        				option.click();
-        			    break;
-        			}
-        		 }
+	             List<WebElement> currentCountry = driver.findElements(By.xpath("//div[@class='btn-group bootstrap-select form-control m_ dropdown show open']//li[103]//a[1]"));
+	             Thread.sleep(1000);
+	             //Iterate through the options
+	             for (WebElement option : currentCountry) {
+	                 if (option.getText().equals("India")) {
+	                     // Use JavaScript to scroll the element into view
+	                     JavascriptExecutor jsex = (JavascriptExecutor) driver;
+	                     jsex.executeScript("arguments[0].scrollIntoView(true);", option);
+	                     option.click();
+	                     break;
+	                 }
+	             } 
         		 test.info("Enter Country");
+        		 Thread.sleep(7000);
         		 
+        		 CurrentStateArrowButton.click();
+        		 CurrentState.sendKeys("Haryana");
+	             List<WebElement> currentState = driver.findElements(By.xpath("//ul[@aria-expanded='true']//li[@class='active']//a[@role='option']"));
+	             Thread.sleep(1000);
+	             //Iterate through the options
+	             for (WebElement option : currentState) {
+	                 if (option.getText().equals("Haryana")) {
+	                     // Use JavaScript to scroll the element into view
+	                     JavascriptExecutor jsex = (JavascriptExecutor) driver;
+	                     jsex.executeScript("arguments[0].scrollIntoView(true);", option);
+	                     option.click();
+	                     break;
+	                 }
+	             } 
+        		 test.info("Enter State");
+        		 Thread.sleep(1000);
+        		 
+        		 CurrentCity.click();
+        		 CurrentCity.sendKeys("New Delhi");
+        		 test.info("Enter city");
+        		 
+        		 CurrentPostalCode.click();
+        		 CurrentPostalCode.sendKeys("110049");
+        		 test.info("Enter Postal Code");
+        		 Thread.sleep(1000);
+        		 
+        		 StatusActiveRadioButton.click();
+        		 test.info("Set status as Active");
+        		 Thread.sleep(2000);
+        		
+        		 ChooseFileButton.sendKeys("C:\\Users\\Varsha\\Desktop\\Img1.jpg");
+        		 test.info("Upload profile picture");
+        		
+        		 SubmitButton.click();
+        		 test.info("Click on submit button");
+        		 
+        		 Thread.sleep(20000);
+
+        		 JavascriptExecutor jsexec = (JavascriptExecutor) driver;
+        		 jsexec.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        		 CancelButton.click();
+	             driver.navigate().refresh();
+	             Thread.sleep(5000);
+	             String dynamicXPath = String.format("//span[normalize-space()='%s']", email);
+	             WebElement emailElement = driver.findElement(By.xpath(dynamicXPath));
+	             
+	             // Validate if the email element is displayed
+	             if (emailElement.isDisplayed()) {
+	                 System.out.println("The email '" + email + "' is present on the webpage.");
+	                 test.info("User created successfully.");
+	             } else {
+	                 System.out.println("The email '" + email + "' is NOT present on the webpage.");
+	                 test.info("User not created.");
+	             }
 	        	
 	        } catch (AssertionError e) {
 	            test.fail("Login failed with exception: " + e.getMessage());
