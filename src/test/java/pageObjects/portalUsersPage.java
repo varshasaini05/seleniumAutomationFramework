@@ -42,6 +42,11 @@ public class portalUsersPage extends BaseTest{
 	    @FindBy(xpath = "//button[normalize-space()='Submit']")
 	    private WebElement submitButton;
 	    
+	    @FindBy(xpath = "(//a[@title=\"Edit\"])[1]")
+	    private WebElement editButton;
+	    
+	    @FindBy(xpath = "//button[normalize-space()='Update']")
+	    private WebElement updateButton;
 	    
 	    public portalUsersPage(WebDriver driver, ExtentTest test) {
 	        super(); 
@@ -65,13 +70,13 @@ public class portalUsersPage extends BaseTest{
 	             String LastName = "Saini";
 	             LastNameField.sendKeys(LastName);
 	             test.info("Enter last name : " + LastName );
-	             String email="abcdefg@mailinator.com";
+	             String email="ggg@mailinator.com";
 	             EmailField.sendKeys(email);
                  test.info("Enter Email : " + email);
 	             phoneCode.sendKeys("+91");
 	             test.info("Enter phone code");
 	             phoneNumber.click();
-	             phoneNumber.sendKeys("8977478940");
+	             phoneNumber.sendKeys("9333333333");
 	             test.info("Enter phone number");
 	             password.sendKeys("Password@05");
 	             test.info("Enter password");
@@ -96,6 +101,48 @@ public class portalUsersPage extends BaseTest{
 	                 test.info("User not created.");
 	             }
 	        	
+	        } catch (AssertionError e) {
+	            test.fail("Login failed with exception: " + e.getMessage());
+	            throw e; // Rethrow to ensure test fails
+	        } catch (Exception e) {
+	            test.fail("An error occurred: " + e.getMessage());
+	            throw e; // Rethrow to ensure test fails
+	        }
+	    }
+	    
+	    public void editPortalUser() throws Exception {
+	    	 try {
+	    		 
+	    		 editButton.click();
+	    		 test.info("Click on edit button");
+	    		 
+	    		 String email="hhh@mailinator.com";
+	    		 EmailField.clear();
+	    		 EmailField.sendKeys(email);
+	    		 test.info("Update Email");
+	    		 
+	    		 phoneNumber.clear();
+	    		 phoneNumber.sendKeys("9444444444");
+	    		 test.info("Update phone number");
+	    		 
+	    		 updateButton.click();
+	    		 test.info("Click on update button");
+	    		 
+	    		 driver.navigate().back();
+		         Thread.sleep(2000);
+		         driver.navigate().back();
+		         driver.navigate().refresh();
+		         String dynamicXPath = String.format("//span[normalize-space()='%s']", email);
+		         WebElement emailElement = driver.findElement(By.xpath(dynamicXPath));
+	    		 
+		         // Validate if the email element is displayed
+	             if (emailElement.isDisplayed()) {
+	                 System.out.println("The email '" + email + "' is present on the webpage.");
+	                 test.info("User updated successfully.");
+	             } else {
+	                 System.out.println("The email '" + email + "' is NOT present on the webpage.");
+	                 test.info("User not updated.");
+	             }
 	        } catch (AssertionError e) {
 	            test.fail("Login failed with exception: " + e.getMessage());
 	            throw e; // Rethrow to ensure test fails

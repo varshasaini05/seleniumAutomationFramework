@@ -1,107 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-09T17:21:04 IST" name="Suite" finished-at="2024-10-09T17:22:53 IST" duration-ms="108410">
+  <suite started-at="2024-10-10T11:01:34 IST" name="Suite" finished-at="2024-10-10T11:02:01 IST" duration-ms="27347">
     <groups>
     </groups>
-    <test started-at="2024-10-09T17:21:04 IST" name="Selenium Automation Framework" finished-at="2024-10-09T17:22:53 IST" duration-ms="108410">
-      <class name="com.example.Testcases.CrewAppUserTestcase">
-        <test-method is-config="true" signature="setUpExtent()[pri:0, instance:com.example.Testcases.CrewAppUserTestcase@5167f57d]" started-at="2024-10-09T17:21:04 IST" name="setUpExtent" finished-at="2024-10-09T17:21:04 IST" duration-ms="137" status="PASS">
+    <test started-at="2024-10-10T11:01:34 IST" name="Selenium Automation Framework" finished-at="2024-10-10T11:02:01 IST" duration-ms="27347">
+      <class name="com.example.Testcases.PortalUserTestcase">
+        <test-method is-config="true" signature="setUpExtent()[pri:0, instance:com.example.Testcases.PortalUserTestcase@64b0598]" started-at="2024-10-10T11:01:34 IST" name="setUpExtent" finished-at="2024-10-10T11:01:34 IST" duration-ms="137" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpExtent -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.Testcases.CrewAppUserTestcase@5167f57d]" started-at="2024-10-09T17:21:04 IST" name="setUp" finished-at="2024-10-09T17:21:08 IST" duration-ms="4139" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.Testcases.PortalUserTestcase@64b0598]" started-at="2024-10-10T11:01:34 IST" name="setUp" finished-at="2024-10-10T11:01:37 IST" duration-ms="3410" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="createUser()[pri:0, instance:com.example.Testcases.CrewAppUserTestcase@5167f57d]" started-at="2024-10-09T17:21:08 IST" name="createUser" finished-at="2024-10-09T17:22:52 IST" duration-ms="104082" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//span[normalize-space()='abc@mailinator.com']"}
-  (Session info: chrome=129.0.6668.60)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.11.0', revision: '040bc5406b'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d4a28fa56a228bb42fb46399a6c989f4, findElement {using=xpath, value=//span[normalize-space()='abc@mailinator.com']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.60, chrome: {chromedriverVersion: 129.0.6668.91 (b00bc8b76d60..., userDataDir: C:\Users\Varsha\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62799}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62799/devtoo..., se:cdpVersion: 129.0.6668.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d4a28fa56a228bb42fb46399a6c989f4]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[normalize-space()='abc@mailinator.com']"}
-  (Session info: chrome=129.0.6668.60)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.11.0', revision: '040bc5406b'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.3'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d4a28fa56a228bb42fb46399a6c989f4, findElement {using=xpath, value=//span[normalize-space()='abc@mailinator.com']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.60, chrome: {chromedriverVersion: 129.0.6668.91 (b00bc8b76d60..., userDataDir: C:\Users\Varsha\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62799}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62799/devtoo..., se:cdpVersion: 129.0.6668.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d4a28fa56a228bb42fb46399a6c989f4
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
-at pageObjects.crewAppUsersPage.createCrewAppUser(crewAppUsersPage.java:372)
-at com.example.Testcases.CrewAppUserTestcase.createUser(CrewAppUserTestcase.java:45)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+        <test-method signature="createUser()[pri:1, instance:com.example.Testcases.PortalUserTestcase@64b0598]" started-at="2024-10-10T11:01:37 IST" name="createUser" finished-at="2024-10-10T11:01:56 IST" duration-ms="18874" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createUser -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.CrewAppUserTestcase@5167f57d]" started-at="2024-10-09T17:22:53 IST" name="afterMethod" finished-at="2024-10-09T17:22:53 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@64b0598]" started-at="2024-10-10T11:01:56 IST" name="afterMethod" finished-at="2024-10-10T11:01:56 IST" duration-ms="6" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=createUser status=FAILURE method=CrewAppUserTestcase.createUser()[pri:0, instance:com.example.Testcases.CrewAppUserTestcase@5167f57d] output={null}]]]>
+                <![CDATA[[TestResult name=createUser status=SUCCESS method=PortalUserTestcase.createUser()[pri:1, instance:com.example.Testcases.PortalUserTestcase@64b0598] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="tearDownExtent()[pri:0, instance:com.example.Testcases.CrewAppUserTestcase@5167f57d]" started-at="2024-10-09T17:22:53 IST" name="tearDownExtent" finished-at="2024-10-09T17:22:54 IST" duration-ms="889" status="PASS">
+        <test-method signature="editUser()[pri:2, instance:com.example.Testcases.PortalUserTestcase@64b0598]" started-at="2024-10-10T11:01:56 IST" name="editUser" finished-at="2024-10-10T11:02:01 IST" duration-ms="5024" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editUser -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@64b0598]" started-at="2024-10-10T11:02:01 IST" name="afterMethod" finished-at="2024-10-10T11:02:01 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=editUser status=SUCCESS method=PortalUserTestcase.editUser()[pri:2, instance:com.example.Testcases.PortalUserTestcase@64b0598] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="tearDownExtent()[pri:0, instance:com.example.Testcases.PortalUserTestcase@64b0598]" started-at="2024-10-10T11:02:01 IST" name="tearDownExtent" finished-at="2024-10-10T11:02:02 IST" duration-ms="848" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownExtent -->
-      </class> <!-- com.example.Testcases.CrewAppUserTestcase -->
+      </class> <!-- com.example.Testcases.PortalUserTestcase -->
     </test> <!-- Selenium Automation Framework -->
   </suite> <!-- Suite -->
 </testng-results>

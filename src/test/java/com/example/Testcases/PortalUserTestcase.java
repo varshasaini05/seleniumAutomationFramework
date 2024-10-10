@@ -10,14 +10,13 @@ import pageObjects.DashboardPage;
 
 public class PortalUserTestcase extends BaseTest{
 	
-	 @Test(retryAnalyzer = RetryAnalyzer.class)
+	 @Test(priority=1, retryAnalyzer = RetryAnalyzer.class)
 	    public void createUser() throws InterruptedException {
 			String Email="3_employee@mailinator.com";
-	    	String Password="Pass@123";
+	    	String Password="Pass@1234";
 	        ExtentTest test = extent.createTest("Create Portal User Test");
 
 	    	 if (test != null) {
-	    		 
 	    	        LoginPage loginPage = new LoginPage(driver, test);
 	    	        loginPage.login(Email,Password);	    	        
 	    	        DashboardPage dashboard = new DashboardPage(driver, test);
@@ -50,4 +49,17 @@ public class PortalUserTestcase extends BaseTest{
 	    	    }
 	    	
 	    }
+	 
+	 @Test(priority=2, retryAnalyzer = RetryAnalyzer.class)
+	    public void editUser() throws Exception {
+	        ExtentTest test = extent.createTest("Edit Portal User Test");
+
+		    if (test != null) {
+			 portalUsersPage portalUser = new portalUsersPage(driver, test);
+		     portalUser.editPortalUser();
+	         BaseTest.setTest(test);
+	        } else {
+	        System.err.println("ExtentTest is not initialized.");
+	        } 
+	 }
 }
