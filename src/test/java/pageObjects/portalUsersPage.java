@@ -11,6 +11,9 @@ import com.example.Testcases.BaseTest;
 
 public class portalUsersPage extends BaseTest{
 	  private ExtentTest test;
+	  String FirstName = "Tiya";
+	  String Email="v3@mailinator.com";
+	  String UpdatedEmail="v6@mailinator.com";
 	  
 	    @FindBy(xpath = "//span[contains(text(),'Add User')]")
 	    private WebElement AddUserButton;
@@ -48,6 +51,9 @@ public class portalUsersPage extends BaseTest{
 	    @FindBy(xpath = "//button[normalize-space()='Update']")
 	    private WebElement updateButton;
 	    
+	    @FindBy(xpath = "//input[@id='generalSearch']")
+	    private WebElement searchBar;
+	    
 	    public portalUsersPage(WebDriver driver, ExtentTest test) {
 	        super(); 
 	        this.driver = driver;
@@ -64,19 +70,17 @@ public class portalUsersPage extends BaseTest{
 	        	 Select dropdown = new Select(UserTypeDropdown);
 	             dropdown.selectByVisibleText("Admin");
 	             test.info("Select user type : Admin");
-	             String FirstName = "Varsha";
 	             FirstNameField.sendKeys(FirstName);
 	             test.info("Enter first name : " + FirstName);
 	             String LastName = "Saini";
 	             LastNameField.sendKeys(LastName);
 	             test.info("Enter last name : " + LastName );
-	             String email="ggg@mailinator.com";
-	             EmailField.sendKeys(email);
-                 test.info("Enter Email : " + email);
+	             EmailField.sendKeys(Email);
+                 test.info("Enter Email : " + Email);
 	             phoneCode.sendKeys("+91");
 	             test.info("Enter phone code");
 	             phoneNumber.click();
-	             phoneNumber.sendKeys("9333333333");
+	             phoneNumber.sendKeys("9393033333");
 	             test.info("Enter phone number");
 	             password.sendKeys("Password@05");
 	             test.info("Enter password");
@@ -89,15 +93,15 @@ public class portalUsersPage extends BaseTest{
 	             Thread.sleep(2000);
 	             driver.navigate().back();
 	             driver.navigate().refresh();
-	             String dynamicXPath = String.format("//span[normalize-space()='%s']", email);
+	             String dynamicXPath = String.format("//span[normalize-space()='%s']", Email);
 	             WebElement emailElement = driver.findElement(By.xpath(dynamicXPath));
 	             
 	             // Validate if the email element is displayed
 	             if (emailElement.isDisplayed()) {
-	                 System.out.println("The email '" + email + "' is present on the webpage.");
+	                 System.out.println("The email '" + Email + "' is present on the webpage.");
 	                 test.info("User created successfully.");
 	             } else {
-	                 System.out.println("The email '" + email + "' is NOT present on the webpage.");
+	                 System.out.println("The email '" + Email + "' is NOT present on the webpage.");
 	                 test.info("User not created.");
 	             }
 	        	
@@ -116,13 +120,12 @@ public class portalUsersPage extends BaseTest{
 	    		 editButton.click();
 	    		 test.info("Click on edit button");
 	    		 
-	    		 String email="hhh@mailinator.com";
 	    		 EmailField.clear();
-	    		 EmailField.sendKeys(email);
+	    		 EmailField.sendKeys(UpdatedEmail);
 	    		 test.info("Update Email");
 	    		 
 	    		 phoneNumber.clear();
-	    		 phoneNumber.sendKeys("9444444444");
+	    		 phoneNumber.sendKeys("9044440444");
 	    		 test.info("Update phone number");
 	    		 
 	    		 updateButton.click();
@@ -132,17 +135,46 @@ public class portalUsersPage extends BaseTest{
 		         Thread.sleep(2000);
 		         driver.navigate().back();
 		         driver.navigate().refresh();
-		         String dynamicXPath = String.format("//span[normalize-space()='%s']", email);
+		         String dynamicXPath = String.format("//span[normalize-space()='%s']", UpdatedEmail);
 		         WebElement emailElement = driver.findElement(By.xpath(dynamicXPath));
 	    		 
 		         // Validate if the email element is displayed
 	             if (emailElement.isDisplayed()) {
-	                 System.out.println("The email '" + email + "' is present on the webpage.");
+	                 System.out.println("The email '" + UpdatedEmail + "' is present on the webpage.");
 	                 test.info("User updated successfully.");
 	             } else {
-	                 System.out.println("The email '" + email + "' is NOT present on the webpage.");
+	                 System.out.println("The email '" + UpdatedEmail + "' is NOT present on the webpage.");
 	                 test.info("User not updated.");
 	             }
+	        } catch (AssertionError e) {
+	            test.fail("Login failed with exception: " + e.getMessage());
+	            throw e; // Rethrow to ensure test fails
+	        } catch (Exception e) {
+	            test.fail("An error occurred: " + e.getMessage());
+	            throw e; // Rethrow to ensure test fails
+	        }
+	    }
+	    
+	    public void searchPortalUser() throws Exception {
+	    	
+           try {
+	    		 
+        	   searchBar.sendKeys(FirstName);
+        	   Thread.sleep(1000);
+        	   test.info("Enter name into search bar");
+        	   
+        	   String dynamicXPath = String.format("//span[normalize-space()='%s']", UpdatedEmail);
+	           WebElement emailElement = driver.findElement(By.xpath(dynamicXPath));
+	             
+	           // Validate if the email element is displayed
+	             if (emailElement.isDisplayed()) {
+	                 System.out.println("The email '" + UpdatedEmail + "' is present on the webpage while search.");
+	                 test.info("User searched successfully.");
+	             } else {
+	                 System.out.println("The email '" + UpdatedEmail + "' is NOT present on the webpage while search.");
+	                 test.info("User not found.");
+	             }
+        	
 	        } catch (AssertionError e) {
 	            test.fail("Login failed with exception: " + e.getMessage());
 	            throw e; // Rethrow to ensure test fails

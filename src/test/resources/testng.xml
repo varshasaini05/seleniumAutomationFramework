@@ -6,7 +6,7 @@
     </listeners>
     <test name="Selenium Automation Framework">
         <classes>
-            <class name="com.example.Testcases.CrewAppUserTestcase" />
+            <class name="com.example.Testcases.PortalUserTestcase" />
         </classes>
     </test>
 </suite>

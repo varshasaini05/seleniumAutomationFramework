@@ -62,4 +62,19 @@ public class PortalUserTestcase extends BaseTest{
 	        System.err.println("ExtentTest is not initialized.");
 	        } 
 	 }
+	
+	 @Test(priority=3, retryAnalyzer = RetryAnalyzer.class)
+	    public void searchUser() throws Exception {
+	        ExtentTest test = extent.createTest("Search Portal User Test");
+
+		    if (test != null) {
+			 portalUsersPage portalUser = new portalUsersPage(driver, test);
+		     portalUser.searchPortalUser();
+	         BaseTest.setTest(test);
+	        } else {
+	        System.err.println("ExtentTest is not initialized.");
+	        } 
+	 }
+
+	 
 }
