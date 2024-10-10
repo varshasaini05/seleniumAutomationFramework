@@ -113,7 +113,15 @@ public class crewAppUsersPage extends BaseTest{
 	    
 	    @FindBy(xpath = "//a[normalize-space()='Cancel']")
 	    private WebElement CancelButton;
+	    
+	    @FindBy(xpath = "(//div[@id=\"dropidpopup\"])[1]")
+	    private WebElement ThreeDotIcon;
+	    
+	    @FindBy(xpath = "//ul[@class=\"dropdown-menu pop-up-menu show\"]/li/a")
+	    private WebElement ViewProfileButton;
 	   
+	    @FindBy(xpath = "//button[@id='changetoreadonly']")
+	    private WebElement EditButton;
 	    
 	    public crewAppUsersPage(WebDriver driver, ExtentTest test) {
 	        super(); 
@@ -134,7 +142,7 @@ public class crewAppUsersPage extends BaseTest{
 	             String LastName = "Saini";
 	             LastNameField.sendKeys(LastName);
 	             test.info("Enter last name : " + LastName );
-	             String email="abc@mailinator.com";
+	             String email="xxxx@mailinator.com";
 	             EmailField.sendKeys(email);
                  test.info("Enter Email : " + email);
                  
@@ -163,7 +171,7 @@ public class crewAppUsersPage extends BaseTest{
         	     phoneCode.sendKeys("+91");
 	             test.info("Enter phone code");
 	             phoneNumber.click();
-	             phoneNumber.sendKeys("8177478940");
+	             phoneNumber.sendKeys("1090932091");
 	             test.info("Enter phone number");
         		 
 	             TotalExperience.click();
@@ -367,10 +375,10 @@ public class crewAppUsersPage extends BaseTest{
         		 jsexec.executeScript("window.scrollTo(0, document.body.scrollHeight);");
         		 CancelButton.click();
 	             driver.navigate().refresh();
-	             Thread.sleep(5000);
-	             String dynamicXPath = String.format("//span[normalize-space()='%s']", email);
+	             Thread.sleep(10000);
+	             String dynamicXPath = String.format("//div[normalize-space()='%s']", email);
 	             WebElement emailElement = driver.findElement(By.xpath(dynamicXPath));
-	             
+	             Thread.sleep(5000);
 	             // Validate if the email element is displayed
 	             if (emailElement.isDisplayed()) {
 	                 System.out.println("The email '" + email + "' is present on the webpage.");
@@ -387,5 +395,29 @@ public class crewAppUsersPage extends BaseTest{
 	            test.fail("An error occurred: " + e.getMessage());
 	            throw e; // Rethrow to ensure test fails
 	        }
+	    }
+	    
+	    public void editCrewAppUser() throws InterruptedException {
+	    	
+	    	ThreeDotIcon.click();
+	    	test.info("Click on 3 dot icon");
+	    	ViewProfileButton.click();
+	    	test.info("Click on view profile icon");
+	    	EditButton.click();
+	    	test.info("Click on edit button");
+	    	
+	        String firstName = "Riya";
+	    	FirstNameField.clear();
+	    	FirstNameField.sendKeys(firstName);
+		    test.info("Update name");
+            
+		    SubmitButton.click();
+		    test.info("Click on submit button for edit Info.");
+		    
+		    driver.navigate().back();
+	        Thread.sleep(2000);
+	        driver.navigate().back();
+	        driver.navigate().refresh();
+      
 	    }
 }

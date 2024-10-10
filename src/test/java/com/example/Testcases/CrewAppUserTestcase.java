@@ -3,13 +3,12 @@ package com.example.Testcases;
 import java.util.Set;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
-//import com.example.Utils.RetryAnalyzer;
 import pageObjects.DashboardPage;
 import pageObjects.LoginPage;
 import pageObjects.crewAppUsersPage;
 
 public class CrewAppUserTestcase extends BaseTest {
-        @Test
+        @Test(priority=1)
 	    public void createUser() throws InterruptedException {
 			String Email="3_employee@mailinator.com";
 	    	String Password="Pass@1234";
@@ -49,4 +48,18 @@ public class CrewAppUserTestcase extends BaseTest {
 	    	    }
 	    	
 	    }
+        
+        @Test(priority=2)
+        public void updateUser() throws InterruptedException {
+        	
+        	 ExtentTest test = extent.createTest("Update Crew App User Test");
+
+	    	 if (test != null) {
+	    		 crewAppUsersPage crewAppUser = new crewAppUsersPage(driver, test);
+	    		 crewAppUser.editCrewAppUser();
+		         BaseTest.setTest(test);
+	    	    } else {
+	    	        System.err.println("ExtentTest is not initialized.");
+	    	    }
+        }
 }
