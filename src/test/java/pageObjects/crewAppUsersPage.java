@@ -12,7 +12,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.example.Testcases.BaseTest;
 
 
-public class crewAppUsersPage extends BaseTest{
+public class CrewAppUsersPage extends BaseTest{
 	  private ExtentTest test;
 	  
 	    @FindBy(xpath = "//a[@title='Add user']")
@@ -123,7 +123,7 @@ public class crewAppUsersPage extends BaseTest{
 	    @FindBy(xpath = "//button[@id='changetoreadonly']")
 	    private WebElement EditButton;
 	    
-	    public crewAppUsersPage(WebDriver driver, ExtentTest test) {
+	    public CrewAppUsersPage(WebDriver driver, ExtentTest test) {
 	        super(); 
 	        this.driver = driver;
 	        this.test = test;

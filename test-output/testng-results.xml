@@ -1,66 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-10T13:32:18 IST" name="Suite" finished-at="2024-10-10T13:32:51 IST" duration-ms="32670">
+  <suite started-at="2024-10-11T12:54:18 IST" name="Suite" finished-at="2024-10-11T12:55:07 IST" duration-ms="49127">
     <groups>
     </groups>
-    <test started-at="2024-10-10T13:32:18 IST" name="Selenium Automation Framework" finished-at="2024-10-10T13:32:51 IST" duration-ms="32670">
+    <test started-at="2024-10-11T12:54:18 IST" name="Selenium Automation Framework" finished-at="2024-10-11T12:55:07 IST" duration-ms="49127">
       <class name="com.example.Testcases.PortalUserTestcase">
-        <test-method is-config="true" signature="setUpExtent()[pri:0, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:18 IST" name="setUpExtent" finished-at="2024-10-10T13:32:18 IST" duration-ms="162" status="PASS">
+        <test-method is-config="true" signature="setUpExtent()[pri:0, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:17 IST" name="setUpExtent" finished-at="2024-10-11T12:54:18 IST" duration-ms="168" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpExtent -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:18 IST" name="setUp" finished-at="2024-10-10T13:32:23 IST" duration-ms="4765" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:18 IST" name="setUp" finished-at="2024-10-11T12:54:21 IST" duration-ms="3796" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="createUser()[pri:1, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:23 IST" name="createUser" finished-at="2024-10-10T13:32:45 IST" duration-ms="21973" status="PASS">
+        <test-method signature="createUser()[pri:1, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:21 IST" name="createUser" finished-at="2024-10-11T12:54:43 IST" duration-ms="21036" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createUser -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:45 IST" name="afterMethod" finished-at="2024-10-10T13:32:45 IST" duration-ms="11" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:43 IST" name="afterMethod" finished-at="2024-10-11T12:54:43 IST" duration-ms="4" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=createUser status=SUCCESS method=PortalUserTestcase.createUser()[pri:1, instance:com.example.Testcases.PortalUserTestcase@18f8cd79] output={null}]]]>
+                <![CDATA[[TestResult name=createUser status=SUCCESS method=PortalUserTestcase.createUser()[pri:1, instance:com.example.Testcases.PortalUserTestcase@50029372] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method signature="editUser()[pri:2, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:45 IST" name="editUser" finished-at="2024-10-10T13:32:49 IST" duration-ms="4604" status="PASS">
+        <test-method signature="editUser()[pri:2, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:43 IST" name="editUser" finished-at="2024-10-11T12:54:47 IST" duration-ms="4229" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- editUser -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:49 IST" name="afterMethod" finished-at="2024-10-10T13:32:49 IST" duration-ms="5" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=editUser status=SUCCESS method=PortalUserTestcase.editUser()[pri:2, instance:com.example.Testcases.PortalUserTestcase@18f8cd79] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method signature="searchUser()[pri:3, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:49 IST" name="searchUser" finished-at="2024-10-10T13:32:51 IST" duration-ms="1250" status="PASS">
+        <test-method signature="searchUser()[pri:3, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:47 IST" name="searchUser" finished-at="2024-10-11T12:54:48 IST" duration-ms="1245" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchUser -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:51 IST" name="afterMethod" finished-at="2024-10-10T13:32:51 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:47 IST" name="afterMethod" finished-at="2024-10-11T12:54:47 IST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=searchUser status=SUCCESS method=PortalUserTestcase.searchUser()[pri:3, instance:com.example.Testcases.PortalUserTestcase@18f8cd79] output={null}]]]>
+                <![CDATA[[TestResult name=editUser status=SUCCESS method=PortalUserTestcase.editUser()[pri:2, instance:com.example.Testcases.PortalUserTestcase@50029372] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="tearDownExtent()[pri:0, instance:com.example.Testcases.PortalUserTestcase@18f8cd79]" started-at="2024-10-10T13:32:51 IST" name="tearDownExtent" finished-at="2024-10-10T13:32:52 IST" duration-ms="1603" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:48 IST" name="afterMethod" finished-at="2024-10-11T12:54:48 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=searchUser status=SUCCESS method=PortalUserTestcase.searchUser()[pri:3, instance:com.example.Testcases.PortalUserTestcase@50029372] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method signature="paginationFunctionality()[pri:4, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:54:48 IST" name="paginationFunctionality" finished-at="2024-10-11T12:55:01 IST" duration-ms="12953" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- paginationFunctionality -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:55:01 IST" name="afterMethod" finished-at="2024-10-11T12:55:01 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=paginationFunctionality status=SUCCESS method=PortalUserTestcase.paginationFunctionality()[pri:4, instance:com.example.Testcases.PortalUserTestcase@50029372] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method signature="displayRecordsFunctionality()[pri:5, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:55:01 IST" name="displayRecordsFunctionality" finished-at="2024-10-11T12:55:07 IST" duration-ms="5770" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- displayRecordsFunctionality -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:55:07 IST" name="afterMethod" finished-at="2024-10-11T12:55:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=displayRecordsFunctionality status=SUCCESS method=PortalUserTestcase.displayRecordsFunctionality()[pri:5, instance:com.example.Testcases.PortalUserTestcase@50029372] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="tearDownExtent()[pri:0, instance:com.example.Testcases.PortalUserTestcase@50029372]" started-at="2024-10-11T12:55:07 IST" name="tearDownExtent" finished-at="2024-10-11T12:55:08 IST" duration-ms="1587" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownExtent -->

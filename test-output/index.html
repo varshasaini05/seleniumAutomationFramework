@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods,   3 passed</span>
+                    <span class="method-stats">5 methods,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -109,7 +109,17 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.example.Testcases.PortalUserTestcase" class="method navigator-link" hash-for-method="displayRecordsFunctionality">displayRecordsFunctionality</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="com.example.Testcases.PortalUserTestcase" class="method navigator-link" hash-for-method="editUser">editUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.example.Testcases.PortalUserTestcase" class="method navigator-link" hash-for-method="paginationFunctionality">paginationFunctionality</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -144,9 +154,23 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
+                  <a name="displayRecordsFunctionality">
+                  </a> <!-- displayRecordsFunctionality -->
+                  <span class="method-name">displayRecordsFunctionality</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="editUser">
                   </a> <!-- editUser -->
                   <span class="method-name">editUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="paginationFunctionality">
+                  </a> <!-- paginationFunctionality -->
+                  <span class="method-name">paginationFunctionality</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -213,24 +237,32 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(5);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'createUser')
 data.setCell(0, 2, 'com.example.Testcases.PortalUserTestcase')
-data.setCell(0, 3, 21973);
+data.setCell(0, 3, 21036);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'editUser')
+data.setCell(1, 1, 'paginationFunctionality')
 data.setCell(1, 2, 'com.example.Testcases.PortalUserTestcase')
-data.setCell(1, 3, 4604);
+data.setCell(1, 3, 12953);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'searchUser')
+data.setCell(2, 1, 'displayRecordsFunctionality')
 data.setCell(2, 2, 'com.example.Testcases.PortalUserTestcase')
-data.setCell(2, 3, 1250);
+data.setCell(2, 3, 5770);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'editUser')
+data.setCell(3, 2, 'com.example.Testcases.PortalUserTestcase')
+data.setCell(3, 3, 4229);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'searchUser')
+data.setCell(4, 2, 'com.example.Testcases.PortalUserTestcase')
+data.setCell(4, 3, 1245);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 27 seconds</span>
+              <span class="suite-total-time">Total running time: 45 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -263,35 +295,51 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">174 ms</span>
+                <span class="method-start">181 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">createUser</span>
-                <span class="method-start">4946 ms</span>
+                <span class="method-start">3992 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod([TestResult name=createUser status=SUCCESS method=PortalUserTestcase.createUser()[pri:1, instance:co...)</span>
-                <span class="method-start">26929 ms</span>
+                <span class="method-start">25039 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">editUser</span>
-                <span class="method-start">26950 ms</span>
+                <span class="method-start">25053 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">searchUser</span>
+                <span class="method-start">29284 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod([TestResult name=editUser status=SUCCESS method=PortalUserTestcase.editUser()[pri:2, instance:com.ex...)</span>
-                <span class="method-start">31554 ms</span>
+                <span class="method-start">29284 ms</span>
               </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">searchUser</span>
-                <span class="method-start">31559 ms</span>
-              </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod([TestResult name=searchUser status=SUCCESS method=PortalUserTestcase.searchUser()[pri:3, instance:co...)</span>
-                <span class="method-start">32824 ms</span>
+                <span class="method-start">30532 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">paginationFunctionality</span>
+                <span class="method-start">30532 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=paginationFunctionality status=SUCCESS method=PortalUserTestcase.paginationFunction...)</span>
+                <span class="method-start">43488 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">displayRecordsFunctionality</span>
+                <span class="method-start">43488 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=displayRecordsFunctionality status=SUCCESS method=PortalUserTestcase.displayRecords...)</span>
+                <span class="method-start">49284 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDownExtent</span>
-                <span class="method-start">32960 ms</span>
+                <span class="method-start">49395 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

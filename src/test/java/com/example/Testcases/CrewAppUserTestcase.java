@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.ExtentTest;
 import pageObjects.DashboardPage;
 import pageObjects.LoginPage;
-import pageObjects.crewAppUsersPage;
+import pageObjects.CrewAppUsersPage;
 
 public class CrewAppUserTestcase extends BaseTest {
         @Test(priority=1)
@@ -40,7 +40,7 @@ public class CrewAppUserTestcase extends BaseTest {
 	                test.info("Click on Users option");
 	    	        dashboard.clickOnCrewAppUsers();
 	                test.info("Select crew app users option");
-	                crewAppUsersPage crewAppUser = new crewAppUsersPage(driver, test);
+	                CrewAppUsersPage crewAppUser = new CrewAppUsersPage(driver, test);
 	                crewAppUser.createCrewAppUser();
 	    	        BaseTest.setTest(test);
 	    	    } else {
@@ -55,7 +55,7 @@ public class CrewAppUserTestcase extends BaseTest {
         	 ExtentTest test = extent.createTest("Update Crew App User Test");
 
 	    	 if (test != null) {
-	    		 crewAppUsersPage crewAppUser = new crewAppUsersPage(driver, test);
+	    		 CrewAppUsersPage crewAppUser = new CrewAppUsersPage(driver, test);
 	    		 crewAppUser.editCrewAppUser();
 		         BaseTest.setTest(test);
 	    	    } else {
