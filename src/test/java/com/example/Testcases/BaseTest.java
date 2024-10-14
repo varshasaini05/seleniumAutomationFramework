@@ -19,69 +19,69 @@ import java.time.Duration;
 
 public class BaseTest {
 	protected WebDriver driver;
-    protected static ExtentReports extent;
-    private static ExtentTest test; 
-    String WebsiteURL = "https://new-stage2-deployer.getglobalgroup.com/ccm-user";
+	protected static ExtentReports extent;
+	private static ExtentTest test; 
+	String WebsiteURL = "https://new-stage2-deployer.getglobalgroup.com/ccm-user";
 
-    @BeforeSuite
-    public void setUpExtent() {
-        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("target/ExtentReports.html");
-        extent = new ExtentReports();
-        extent.attachReporter(sparkReporter);
-        sparkReporter.config().setReportName("Selenium Web Automation");
-        sparkReporter.config().setDocumentTitle("Web Automation Report");
-        extent.setSystemInfo("OS", System.getProperty("os.name"));
-        extent.setSystemInfo("User Name", System.getProperty("user.name"));
-        extent.setSystemInfo("Java Version", System.getProperty("java.version"));
-        extent.setSystemInfo("Browser", "Chrome");
-        extent.setSystemInfo("Browser Version", "128.0.6613.85");
-        extent.setSystemInfo("Test Environment", "QA");
-    }
+	@BeforeSuite
+	public void setUpExtent() {
+		ExtentSparkReporter sparkReporter = new ExtentSparkReporter("target/ExtentReports.html");
+		extent = new ExtentReports();
+		extent.attachReporter(sparkReporter);
+		sparkReporter.config().setReportName("Selenium Web Automation");
+		sparkReporter.config().setDocumentTitle("Web Automation Report");
+		extent.setSystemInfo("OS", System.getProperty("os.name"));
+		extent.setSystemInfo("User Name", System.getProperty("user.name"));
+		extent.setSystemInfo("Java Version", System.getProperty("java.version"));
+		extent.setSystemInfo("Browser", "Chrome");
+		extent.setSystemInfo("Browser Version", "128.0.6613.85");
+		extent.setSystemInfo("Test Environment", "QA");
+	}
 
-    @BeforeClass
-    public void setUp() throws InterruptedException {
-    	 driver = new ChromeDriver();
-         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-         driver.manage().window().maximize();
-         driver.get(WebsiteURL);
-    }
+	@BeforeClass
+	public void setUp() throws InterruptedException {
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().window().maximize();
+		driver.get(WebsiteURL);
+	}
 
-    @AfterMethod
-    public void afterMethod(ITestResult result) {
-        // Handle Extent Report logging
-        if (test != null) {
-            if (result.getStatus() == ITestResult.FAILURE) {
-                test.fail(result.getThrowable());
-            } else if (result.getStatus() == ITestResult.SUCCESS) {
-                test.pass("Test Passed");
-            } else {
-                test.skip("Test Skipped");
-            }
-        } else {
-            System.err.println("ExtentTest is not initialized.");
-        }
-    }
+	@AfterMethod
+	public void afterMethod(ITestResult result) {
+		// Handle Extent Report logging
+		if (test != null) {
+			if (result.getStatus() == ITestResult.FAILURE) {
+				test.fail(result.getThrowable());
+			} else if (result.getStatus() == ITestResult.SUCCESS) {
+				test.pass("Test Passed");
+			} else {
+				test.skip("Test Skipped");
+			}
+		} else {
+			System.err.println("ExtentTest is not initialized.");
+		}
+	}
 
-    @AfterSuite
-    public void tearDownExtent() {
-        extent.flush();
+	@AfterSuite
+	public void tearDownExtent() {
+		extent.flush();
 
-        // Close the browser
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-    
-    public static void setTest(ExtentTest test) {
-        BaseTest.test = test;
-    }
-    
-    public void takeScreenshot(String testName) {
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(screenshot, new File("screenshots/" + testName + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+		// Close the browser
+		if (driver != null) {
+			driver.quit();
+		}
+	}
+
+	public static void setTest(ExtentTest test) {
+		BaseTest.test = test;
+	}
+
+	public void takeScreenshot(String testName) {
+		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(screenshot, new File("screenshots/" + testName + ".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -6,15 +6,15 @@
   </listeners>
   <test thread-count="5" name="Selenium Automation Framework(failed)">
     <classes>
-      <class name="com.example.Testcases.PortalUserTestcase">
+      <class name="com.example.Testcases.CrewAppUserTestcase">
         <methods>
-          <include name="displayRecordsFunctionality"/>
           <include name="tearDownExtent"/>
           <include name="setUpExtent"/>
+          <include name="ColumnFilters"/>
           <include name="afterMethod"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- com.example.Testcases.PortalUserTestcase -->
+      </class> <!-- com.example.Testcases.CrewAppUserTestcase -->
     </classes>
   </test> <!-- Selenium Automation Framework(failed) -->
 </suite> <!-- Failed suite [Suite] -->
