@@ -8,6 +8,7 @@ import pageObjects.LoginPage;
 import pageObjects.CrewAppUsersPage;
 
 public class CrewAppUserTestcase extends BaseTest {
+	String phoneNumber;
 	@Test(priority=1)
 	public void createUser() throws InterruptedException {
 		String Email="3_employee@mailinator.com";
@@ -41,7 +42,7 @@ public class CrewAppUserTestcase extends BaseTest {
 			dashboard.clickOnCrewAppUsers();
 			test.info("Select crew app users option");
 			CrewAppUsersPage crewAppUser = new CrewAppUsersPage(driver, test);
-			crewAppUser.createCrewAppUser();
+			phoneNumber =  crewAppUser.createCrewAppUser();
 			BaseTest.setTest(test);
 		} else {
 			System.err.println("ExtentTest is not initialized.");
@@ -75,7 +76,7 @@ public class CrewAppUserTestcase extends BaseTest {
 			//			crewAppUser.validateDeployerIdFilter();
 			Thread.sleep(2000);
 			crewAppUser.validateNameFilter();
-			//			crewAppUser.validatePhoneNumberFilter();
+			//			crewAppUser.validatePhoneNumberFilter(phoneNumber);
 			//			crewAppUser.validateEmailFilter();
 			//			crewAppUser.viewCVFilter();
 			//			crewAppUser.disciplineFilter();

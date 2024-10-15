@@ -22,6 +22,13 @@ public class CrewAppUsersPage extends BaseTest{
 	String FirstName = "Tiyo";
 	String LastName = "kathuria";
 
+	public CrewAppUsersPage(WebDriver driver, ExtentTest test) {
+		super(); 
+		this.driver = driver;
+		this.test = test;
+		PageFactory.initElements(driver, this);
+	}
+
 	@FindBy(xpath = "//a[@title='Add user']")
 	private WebElement AddUserButton;
 
@@ -136,7 +143,7 @@ public class CrewAppUsersPage extends BaseTest{
 	@FindBy(xpath = "//div[@id='184-display']")
 	private WebElement DeployerIdHamburgerDropdown;
 
-	@FindBy(xpath = "//input[@id='ag-186-input']")
+	@FindBy(xpath = "//div[@ref='eValueFrom1']//input[@placeholder='Filter...']")
 	private WebElement DeployerIdHamburgerFilter;
 
 	@FindBy(xpath = "//button[normalize-space()='Apply']")
@@ -157,10 +164,16 @@ public class CrewAppUsersPage extends BaseTest{
 	@FindBy(xpath = "(//div[@col-id='full_name_user'])[2]")
 	private WebElement NameColumnValue;
 
-	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[4]")
+	@FindBy(xpath = "//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable ag-header-cell-filtered']")
 	private WebElement PhoneNumberColumn;
 
-	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[5]")
+	@FindBy(xpath = "//div[@ref='eOptions1']//span[@class='ag-icon ag-icon-small-down']")
+	private WebElement PhoneNumberHamburgerDropdown;
+
+	@FindBy(xpath = "//div[@ref=\"eValueFrom1\"]//input[@placeholder='Filter...']")
+	private WebElement PhoneNumberHamburgerFilter;
+
+	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[4]")
 	private WebElement EmailColumn;
 
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[6]")
@@ -226,17 +239,27 @@ public class CrewAppUsersPage extends BaseTest{
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[26]")
 	private WebElement LastSyncDeployerColumn;
 
-	public CrewAppUsersPage(WebDriver driver, ExtentTest test) {
-		super(); 
-		this.driver = driver;
-		this.test = test;
-		PageFactory.initElements(driver, this);
+
+	// Method to generate a random 10-digit phone number
+	public String generatePhoneNumber() {
+		Random randomPHNumber = new Random();
+		// The first digit of a phone number should not be 0 or 1
+		int firstDigit = randomPHNumber.nextInt(9) + 1;  // Ensures first digit is between 1-9
+		// Generate remaining 9 digits
+		StringBuilder phoneNumber = new StringBuilder();
+		phoneNumber.append(firstDigit);
+		for (int i = 0; i < 9; i++) {
+			phoneNumber.append(randomPHNumber.nextInt(10)); // Appends a random digit from 0 to 9
+		}
+		return phoneNumber.toString();
 	}
 
-	public void createCrewAppUser() throws InterruptedException {
+
+	public String createCrewAppUser() throws InterruptedException {
 		try {
 
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			String phoneNumber;
 			WebElement addUserButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='Add user']")));
 
 			test.info("Navigating to create crew app user!!!");
@@ -250,7 +273,7 @@ public class CrewAppUsersPage extends BaseTest{
 			// Define characters to be used in the email
 			String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
 			// Set the length for the random string part of the email
-			int emailLength = 10;
+			int emailLength = 5;
 			// Create a StringBuilder to construct the random email
 			StringBuilder email = new StringBuilder();
 			Random random = new Random();
@@ -290,16 +313,8 @@ public class CrewAppUsersPage extends BaseTest{
 			test.info("Enter phone code");
 			phoneInputField.click();
 
-			Random randomPHNumber = new Random();
-			// The first digit of a phone number should not be 0 or 1.
-			int firstDigit = randomPHNumber.nextInt(9) + 1;  // Ensures first digit is between 1-9
-			// Generate remaining 9 digits
-			StringBuilder phoneNumber = new StringBuilder();
-			phoneNumber.append(firstDigit);
-			for (int i = 0; i < 9; i++) {
-				phoneNumber.append(randomPHNumber.nextInt(10)); // Appends a random digit from 0 to 9
-			}
-			phoneInputField.sendKeys(phoneNumber.toString());
+			phoneNumber = generatePhoneNumber();
+			phoneInputField.sendKeys(phoneNumber);
 			test.info("Enter phone number");
 
 			TotalExperience.click();
@@ -385,7 +400,6 @@ public class CrewAppUsersPage extends BaseTest{
 
 			SubDiscipline1aField.click();
 			SubDiscipline1aField.sendKeys("Drilling");
-			//button[@title=\"Sub Discipline 1a\"]/..//ul[@class=\"dropdown-menu inner\"]/li/a
 			List<WebElement> discipline1a = driver.findElements(By.xpath("//li[@class='active']//a[@role='option']"));
 			Thread.sleep(1000);
 			//Iterate through the options
@@ -515,6 +529,8 @@ public class CrewAppUsersPage extends BaseTest{
 				System.out.println("The email '" + email + "' is NOT present on the webpage.");
 				test.info("User not created.");
 			}
+			System.out.println("This is the phone number value at the end of the create user method: "+phoneNumber);
+			return phoneNumber;
 
 		} catch (AssertionError e) {
 			test.fail("Login failed with exception: " + e.getMessage());
@@ -558,7 +574,7 @@ public class CrewAppUsersPage extends BaseTest{
 		Actions actions = new Actions(driver);
 		actions.moveToElement(DeployerIdColumn).perform();
 		Thread.sleep(1000);
-		WebElement HamburgerIcon_deployerId = getHamburgerIconWithLabel("Name");
+		WebElement HamburgerIcon_deployerId = getHamburgerIconWithLabel("Deployer Id");
 		HamburgerIcon_deployerId.click();
 		Thread.sleep(1000);
 
@@ -588,6 +604,8 @@ public class CrewAppUsersPage extends BaseTest{
 		int deployerId = Integer.parseInt(text);
 		Assert.assertNotEquals(deployerId,Integer.parseInt(DeployerIdValue));
 		test.info("Deployer id filter validate.");
+		Thread.sleep(5000);
+
 	}
 
 
@@ -603,22 +621,59 @@ public class CrewAppUsersPage extends BaseTest{
 		NameHamburgerFilter.sendKeys(FirstName);
 		ApplyButton.click();
 
-		
-		String expectedFullName = FirstName + " " + LastName;
-
-		List<WebElement> userRecords = driver.findElements(By.xpath("//div[@class='user-name']"));
-
-		// Validate each record to ensure it matches the expected full name
-		for (WebElement record : userRecords) {
-			String actualFullName = record.getText().trim();
-			Assert.assertEquals(actualFullName, expectedFullName, "Record does not match expected name.");
+		List<WebElement> nameRecords = driver.findElements(By.xpath("//div[@col-id=\"full_name_user\" and @role=\"gridcell\"]"));
+		// Loop through each element and check if it contains "tiyo"
+		for (WebElement record : nameRecords) {
+			String actualName = record.getText().toLowerCase();
+			Assert.assertTrue(actualName.contains(FirstName.toLowerCase()), 
+					"Name does not contain the expected part: " + FirstName);
 		}	
+		Thread.sleep(5000);
+
 	}
 
 
+	public void validatePhoneNumberFilter(String phoneNumber) throws InterruptedException {
+		System.out.println("This is the phone number value at the starting of the validate phonen number method: "+phoneNumber);
+		ResetFiltersButton.click();
+		Thread.sleep(5000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(PhoneNumberColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_phoneNumber = getHamburgerIconWithLabel("(+Code)Phone");
+		HamburgerIcon_phoneNumber.click();
+		Thread.sleep(3000);
 
-	public void validatePhoneNumberFilter() {
+		PhoneNumberHamburgerDropdown.click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+		List<WebElement> options = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='ag-list-item ag-select-list-item']")));
+
+		for (WebElement option : options) {
+			if (option.getText().equals("Not equal")) {
+				wait.until(ExpectedConditions.elementToBeClickable(option));
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("arguments[0].click();", option);
+				break;
+			}
+		}
+
+		Thread.sleep(3000);
+		PhoneNumberHamburgerFilter.click();
+		System.out.println("This is the phone number value at the end of the validate method: "+phoneNumber);
+		DeployerIdHamburgerFilter.sendKeys(phoneNumber);
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
+
+		List<WebElement> nameRecords = driver.findElements(By.xpath("//div[@col-id='display_name' and @role='gridcell']"));
+
+		for (WebElement record : nameRecords) {
+			String actualName = record.getText();
+			Assert.assertFalse(actualName.contains(phoneNumber), 
+					"Test failed: Name contains the phone number, which is unexpected. Name: " + actualName);
+		}
+		Thread.sleep(5000);
 	}
 
 	public void validateEmailFilter() {

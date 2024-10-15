@@ -9,6 +9,7 @@
       <class name="com.example.Testcases.CrewAppUserTestcase">
         <methods>
           <include name="tearDownExtent"/>
+          <include name="createUser"/>
           <include name="setUpExtent"/>
           <include name="ColumnFilters"/>
           <include name="afterMethod"/>

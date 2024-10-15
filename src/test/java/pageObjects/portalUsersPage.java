@@ -293,13 +293,5 @@ public class PortalUsersPage extends BaseTest{
 		System.out.println("The table row count matches the dropdown selection. Test passed.");
 		test.info("table row count matches the dropdown selection");
 	}
-
-
-	public void tableSortingPortalUser() throws InterruptedException {
-
-		driver.navigate().refresh();
-		Thread.sleep(1000);
-
-		
-	}
+	
 }

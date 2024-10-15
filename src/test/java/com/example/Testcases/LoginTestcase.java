@@ -10,7 +10,7 @@ public class LoginTestcase extends BaseTest {
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testLogin() throws InterruptedException {
     	String Email="3_employee@mailinator.com";
-    	String Password="Pass@1234";
+    	String Password="Pass@123";
         ExtentTest test = extent.createTest("Login Test");
 
     	 if (test != null) {
