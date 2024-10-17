@@ -9,6 +9,8 @@ import pageObjects.CrewAppUsersPage;
 
 public class CrewAppUserTestcase extends BaseTest {
 	String phoneNumber;
+	String email;
+
 	@Test(priority=1)
 	public void createUser() throws InterruptedException {
 		String Email="3_employee@mailinator.com";
@@ -42,7 +44,9 @@ public class CrewAppUserTestcase extends BaseTest {
 			dashboard.clickOnCrewAppUsers();
 			test.info("Select crew app users option");
 			CrewAppUsersPage crewAppUser = new CrewAppUsersPage(driver, test);
-			phoneNumber =  crewAppUser.createCrewAppUser();
+			String[] userInfo = crewAppUser.createCrewAppUser();
+			phoneNumber = userInfo[0];
+			email = userInfo[1];
 			BaseTest.setTest(test);
 		} else {
 			System.err.println("ExtentTest is not initialized.");
@@ -67,7 +71,7 @@ public class CrewAppUserTestcase extends BaseTest {
 	@Test(priority=3)
 	public void ColumnFilters() throws InterruptedException {
 
-		ExtentTest test = extent.createTest("Create Crew App User Test");
+		ExtentTest test = extent.createTest("Filters validation for Crew App User Test");
 
 		if (test != null) {
 
@@ -77,12 +81,12 @@ public class CrewAppUserTestcase extends BaseTest {
 			Thread.sleep(2000);
 			crewAppUser.validateNameFilter();
 			//			crewAppUser.validatePhoneNumberFilter(phoneNumber);
-			//			crewAppUser.validateEmailFilter();
-			//			crewAppUser.viewCVFilter();
-			//			crewAppUser.disciplineFilter();
-			//			crewAppUser.poolStatusFilter();
-			//			crewAppUser.countryFilter();
-			//			crewAppUser.roleFilter();
+			crewAppUser.validateEmailFilter(email);
+			crewAppUser.viewCVFilter();
+			crewAppUser.disciplineFilter();
+			crewAppUser.poolStatusFilter();
+			crewAppUser.countryFilter();
+			crewAppUser.roleFilter();
 			//			crewAppUser.yearOfExperienceFilter();
 			//			crewAppUser.subDisciplineFilter();
 			//			crewAppUser.userTypeFilter();

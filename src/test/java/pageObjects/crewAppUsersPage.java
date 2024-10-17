@@ -19,8 +19,11 @@ import com.example.Testcases.BaseTest;
 
 public class CrewAppUsersPage extends BaseTest{
 	private ExtentTest test;
-	String FirstName = "Tiyo";
-	String LastName = "kathuria";
+	String FirstName = "John";
+	String LastName = "Mavros";
+	String Discipline1 = "CBM";
+	String Nationality = "India";
+	String UserRole1 = "Data Analyst";
 
 	public CrewAppUsersPage(WebDriver driver, ExtentTest test) {
 		super(); 
@@ -152,7 +155,7 @@ public class CrewAppUsersPage extends BaseTest{
 	@FindBy(xpath = "//div[normalize-space() and number(normalize-space())]")
 	private WebElement DeployerIdColumnValue;
 
-	@FindBy(xpath = "//div[normalize-space() and number(normalize-space())]")
+	@FindBy(xpath = "(//a[@title='Reset filters'])[2]")
 	private WebElement ResetFiltersButton;
 
 	@FindBy(xpath = "//div[@ref=\"eValue1\"]//input[@placeholder='Filter...']")
@@ -176,20 +179,41 @@ public class CrewAppUsersPage extends BaseTest{
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[4]")
 	private WebElement EmailColumn;
 
+	@FindBy(xpath = "//div[@ref='eValue1']//input[@placeholder='Filter...']")
+	private WebElement EmailHamburgerFilter;
+
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[6]")
 	private WebElement ViewCVColumn;
+
+	@FindBy(xpath = "(//div[@class='ag-set-filter-item-checkbox ag-labeled ag-label-align-right ag-checkbox ag-input-field']/div[@class='ag-input-field-label ag-label ag-checkbox-label'])[2]")
+	private WebElement IsCVCheckbox;
+
+	@FindBy(xpath = "(//div[@class='ag-set-filter-item-checkbox ag-labeled ag-label-align-right ag-checkbox ag-input-field']/div[@class='ag-input-field-label ag-label ag-checkbox-label'])[3]")
+	private WebElement NotCVCheckbox;
 
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[7]")
 	private WebElement DisciplineColumn;
 
+	@FindBy(xpath = "//div[@ref='eValue1']//input[@placeholder='Filter...']")
+	private WebElement DisciplineFilter;
+
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[8]")
 	private WebElement PoolStatusColumn;
+
+	@FindBy(xpath = "(//div[@ref=\"eCheckbox\"]//div[@class='ag-input-field-label ag-label ag-checkbox-label'])[3]")
+	private WebElement PoolStatusCheckbox;
 
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[9]")
 	private WebElement CountryColumn;
 
+	@FindBy(xpath = "//div[@ref='eValue1']//input[@placeholder='Filter...']")
+	private WebElement CountryFilter;
+
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[10]")
 	private WebElement RoleColumn;
+
+	@FindBy(xpath = "//div[@ref='eValue1']//input[@placeholder='Filter...']")
+	private WebElement RoleFilter;
 
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[11]")
 	private WebElement YrsOfExperienceColumn;
@@ -254,12 +278,31 @@ public class CrewAppUsersPage extends BaseTest{
 		return phoneNumber.toString();
 	}
 
+	public String generateEmail() {
+		// Define characters to be used in the email
+		String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+		// Set the length for the random string part of the email
+		int emailLength = 5;
+		// Create a StringBuilder to construct the random email
+		StringBuilder email = new StringBuilder();
+		Random random = new Random();
+		// Generate random characters
+		for (int i = 0; i < emailLength; i++) {
+			int index = random.nextInt(characters.length());
+			email.append(characters.charAt(index));
+		}
+		// Append a domain to complete the email
+		email.append("@mailinator.com");
+		return email.toString();
+	}
 
-	public String createCrewAppUser() throws InterruptedException {
+
+	public String[] createCrewAppUser() throws InterruptedException {
 		try {
 
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			String phoneNumber;
+			String email;
 			WebElement addUserButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='Add user']")));
 
 			test.info("Navigating to create crew app user!!!");
@@ -270,27 +313,14 @@ public class CrewAppUsersPage extends BaseTest{
 			LastNameField.sendKeys(LastName);
 			test.info("Enter last name : " + LastName );
 
-			// Define characters to be used in the email
-			String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-			// Set the length for the random string part of the email
-			int emailLength = 5;
-			// Create a StringBuilder to construct the random email
-			StringBuilder email = new StringBuilder();
-			Random random = new Random();
-			// Generate random characters
-			for (int i = 0; i < emailLength; i++) {
-				int index = random.nextInt(characters.length());
-				email.append(characters.charAt(index));
-			}
-			// Append a domain to complete the email
-			email.append("@mailinator.com");
-			EmailField.sendKeys(email.toString());
+			email = generateEmail();
+			EmailField.sendKeys(email);
 			test.info("Enter Email : " + email);
 
 			// Click on the dropdown to open it
 			NationalityField.click();
 			// Enter the search text
-			NationalityFieldSearchBar.sendKeys("India");
+			NationalityFieldSearchBar.sendKeys(Nationality);
 			Thread.sleep(1000);
 			List<WebElement> nationality = driver.findElements(By.xpath("//button[@title=\"Nationality\"]/..//ul[@role=\"listbox\"]/li[not(@class=\"hidden\" or @class=\"selected hidden\")]"));
 			for(WebElement option :nationality) {
@@ -346,7 +376,7 @@ public class CrewAppUsersPage extends BaseTest{
 			List<WebElement> userRole1 = driver.findElements(By.xpath("//div[@class='dropdown-menu open show']/ul[@class=\"dropdown-menu inner\"]/li/a"));
 			// Iterate through the options
 			for (WebElement option : userRole1) {
-				if (option.getText().equals("Data Analyst")) {
+				if (option.getText().equals(UserRole1)) {
 					// Use JavaScript to scroll the element into view
 					JavascriptExecutor js = (JavascriptExecutor) driver;
 					js.executeScript("arguments[0].scrollIntoView(true);", option);
@@ -401,7 +431,7 @@ public class CrewAppUsersPage extends BaseTest{
 			SubDiscipline1aField.click();
 			SubDiscipline1aField.sendKeys("Drilling");
 			List<WebElement> discipline1a = driver.findElements(By.xpath("//li[@class='active']//a[@role='option']"));
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 			//Iterate through the options
 			for (WebElement option : discipline1a) {
 				if (option.getText().equals("Drilling")) {
@@ -420,7 +450,7 @@ public class CrewAppUsersPage extends BaseTest{
 			Thread.sleep(1000);
 			// Iterate through the options
 			for (WebElement option : discipline2) {
-				if (option.getText().equals("CBM")) {
+				if (option.getText().equals(Discipline1)) {
 					// Use JavaScript to scroll the element into view
 					JavascriptExecutor js = (JavascriptExecutor) driver;
 					js.executeScript("arguments[0].scrollIntoView(true);", option);
@@ -529,8 +559,10 @@ public class CrewAppUsersPage extends BaseTest{
 				System.out.println("The email '" + email + "' is NOT present on the webpage.");
 				test.info("User not created.");
 			}
-			System.out.println("This is the phone number value at the end of the create user method: "+phoneNumber);
-			return phoneNumber;
+
+			String[] result = { phoneNumber, email };
+			return result;
+
 
 		} catch (AssertionError e) {
 			test.fail("Login failed with exception: " + e.getMessage());
@@ -620,6 +652,7 @@ public class CrewAppUsersPage extends BaseTest{
 		Thread.sleep(3000);
 		NameHamburgerFilter.sendKeys(FirstName);
 		ApplyButton.click();
+		Thread.sleep(2000);
 
 		List<WebElement> nameRecords = driver.findElements(By.xpath("//div[@col-id=\"full_name_user\" and @role=\"gridcell\"]"));
 		// Loop through each element and check if it contains "tiyo"
@@ -628,14 +661,15 @@ public class CrewAppUsersPage extends BaseTest{
 			Assert.assertTrue(actualName.contains(FirstName.toLowerCase()), 
 					"Name does not contain the expected part: " + FirstName);
 		}	
+		test.info("Name filter validate.");
 		Thread.sleep(5000);
-
 	}
 
 
 	public void validatePhoneNumberFilter(String phoneNumber) throws InterruptedException {
-		System.out.println("This is the phone number value at the starting of the validate phonen number method: "+phoneNumber);
+		System.out.println("starting of phone number filter");
 		ResetFiltersButton.click();
+		System.out.println("after reset filter in phone number field");
 		Thread.sleep(5000);
 		Actions actions = new Actions(driver);
 		actions.moveToElement(PhoneNumberColumn).perform();
@@ -660,7 +694,6 @@ public class CrewAppUsersPage extends BaseTest{
 
 		Thread.sleep(3000);
 		PhoneNumberHamburgerFilter.click();
-		System.out.println("This is the phone number value at the end of the validate method: "+phoneNumber);
 		DeployerIdHamburgerFilter.sendKeys(phoneNumber);
 		Thread.sleep(2000);
 		ApplyButton.click();
@@ -673,31 +706,175 @@ public class CrewAppUsersPage extends BaseTest{
 			Assert.assertFalse(actualName.contains(phoneNumber), 
 					"Test failed: Name contains the phone number, which is unexpected. Name: " + actualName);
 		}
+		test.info("Phone number filter validate.");
 		Thread.sleep(5000);
 	}
 
-	public void validateEmailFilter() {
+	public void validateEmailFilter(String email) throws InterruptedException {
+		ResetFiltersButton.click();
+		Thread.sleep(5000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(EmailColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_Email = getHamburgerIconWithLabel("Email");
+		HamburgerIcon_Email.click();
+		Thread.sleep(3000);
+
+		EmailHamburgerFilter.click();
+		EmailHamburgerFilter.sendKeys(email);
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
+
+		List<WebElement> nameRecords = driver.findElements(By.xpath("//div[@col-id='email' and @role='gridcell']"));
+
+		for (WebElement record : nameRecords) {
+			String actualName = record.getText();
+			Assert.assertTrue(actualName.contains(email.toLowerCase()), 
+					"Name does not contain the expected part: " + email);	
+		}
+		test.info("Email filter validate.");
+		Thread.sleep(5000);
+	}
+
+	public void viewCVFilter() throws InterruptedException {
+		ResetFiltersButton.click();
+		Thread.sleep(5000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(ViewCVColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_ViewCV = getHamburgerIconWithLabel("View CV");
+		HamburgerIcon_ViewCV.click();
+		Thread.sleep(3000);
+		IsCVCheckbox.click();
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(7000);
+		//Validate number of records equals to CV records
+		List<WebElement> CVRecords= driver.findElements(By.xpath("//div[@col-id='viewcv' and @role='gridcell']//a[@title='View CV']"));
+		int CVRecordsCount = CVRecords.size();
+		// Locate all rows in the table (assuming the table has a <tbody>)
+		List<WebElement> CVRecordsRows = driver.findElements(By.xpath("//div[@col-id='viewcv' and @role='gridcell']"));
+		// Get the count of rows
+		int CVRecordsrowCount = CVRecordsRows.size();
+		Assert.assertEquals(CVRecordsCount, CVRecordsrowCount, "The number of CV records does not match the number of table records.");
+
+		test.info("View CV filter validate.");
+		Thread.sleep(5000);
+	}
+
+	public void disciplineFilter() throws InterruptedException {
+		ResetFiltersButton.click();
+		Thread.sleep(5000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(DisciplineColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_Discipline = getHamburgerIconWithLabel("Discipline");
+		HamburgerIcon_Discipline.click();
+		Thread.sleep(3000);
+
+		DisciplineFilter.click();
+		DisciplineFilter.sendKeys(Discipline1);
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
+
+		List<WebElement> disciplineRecords = driver.findElements(By.xpath("//div[@col-id='displine_name_user' and @role='gridcell']"));
+
+		for (WebElement record : disciplineRecords) {
+			String actualName = record.getText();
+			Assert.assertTrue(actualName.contains(Discipline1), 
+					"Name does not contain the expected part: " + Discipline1);	
+		}
+		test.info("Discipline filter validate.");
+		Thread.sleep(5000);
+	}
+
+	public void poolStatusFilter() throws InterruptedException {
+		ResetFiltersButton.click();
+		Thread.sleep(5000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(PoolStatusColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_PoolStatus = getHamburgerIconWithLabel("Pool Status");
+		HamburgerIcon_PoolStatus.click();
+		Thread.sleep(3000);
+
+		String poolStatusText = PoolStatusCheckbox.getText();
+		PoolStatusCheckbox.click();
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
+
+		List<WebElement> poolStatusRecords = driver.findElements(By.xpath("//div[@col-id='pool_id' and @role='gridcell']"));
+
+		for (WebElement record : poolStatusRecords) {
+			String actualName = record.getText();
+			Assert.assertTrue(actualName.contains(poolStatusText), 
+					"Name does not contain the expected part: " + poolStatusText);	
+		}
+		test.info("Pool Status filter validate.");
+		Thread.sleep(5000);	
+	}
+
+	public void countryFilter() throws InterruptedException {
+		ResetFiltersButton.click();
+		Thread.sleep(5000);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(CountryColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_Country = getHamburgerIconWithLabel("Country");
+		HamburgerIcon_Country.click();
+		Thread.sleep(3000);
+
+		CountryFilter.click();
+		CountryFilter.sendKeys(Nationality);
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
+
+		List<WebElement> countryRecords = driver.findElements(By.xpath("//div[@col-id='country_name' and @role='gridcell']"));
+
+		for (WebElement record : countryRecords) {
+			String actualName = record.getText();
+			Assert.assertTrue(actualName.contains(Nationality), 
+					"Name does not contain the expected part: " + Nationality);	
+		}
+		test.info("Nationality filter validate.");
+		Thread.sleep(5000);
 
 	}
 
-	public void viewCVFilter() {
+	public void roleFilter() throws InterruptedException {
+		ResetFiltersButton.click();
+		Thread.sleep(5000);
 
-	}
+		WebElement cell = driver.findElement(By.xpath("//span[@class='ag-header-cell-text'][normalize-space()='Role']"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView({inline: 'center'});", cell);
+		Thread.sleep(3000);
 
-	public void disciplineFilter() {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(RoleColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_Role = getHamburgerIconWithLabel("Role");
+		HamburgerIcon_Role.click();
+		Thread.sleep(3000);
 
-	}
+		RoleFilter.click();
+		RoleFilter.sendKeys(UserRole1);
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
 
-	public void poolStatusFilter() {
-
-	}
-
-	public void countryFilter() {
-
-	}
-
-	public void roleFilter() {
-
+		List<WebElement> roleRecords = driver.findElements(By.xpath("//div[@col-id='role_name_user' and @role='gridcell']"));
+		for (WebElement record : roleRecords) {
+			String actualName = record.getText();
+			Assert.assertTrue(actualName.contains(UserRole1), 
+					"Name does not contain the expected part: " + UserRole1);	
+		}
+		test.info("Role filter validate.");
+		Thread.sleep(5000);
 	}
 
 	public void yearOfExperienceFilter() {
