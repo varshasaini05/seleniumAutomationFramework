@@ -24,6 +24,9 @@ public class CrewAppUsersPage extends BaseTest{
 	String Discipline1 = "CBM";
 	String Nationality = "India";
 	String UserRole1 = "Data Analyst";
+	String YrsOfExperience = "4";
+	String SubDiscipline1a = "Drilling";
+	String userType = "APP";
 
 	public CrewAppUsersPage(WebDriver driver, ExtentTest test) {
 		super(); 
@@ -217,13 +220,22 @@ public class CrewAppUsersPage extends BaseTest{
 
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[11]")
 	private WebElement YrsOfExperienceColumn;
+	
+	@FindBy(xpath = "//div[@ref='eValue1']//input[@placeholder='Filter...']")
+	private WebElement YrsOfExperienceFilter;
 
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[12]")
 	private WebElement SubDisciplineColumn;
+	
+	@FindBy(xpath = "//div[@ref='eValue1']//input[@placeholder='Filter...']")
+	private WebElement SubDisciplineFilter;
 
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[13]")
 	private WebElement UserTypeColumn;
 
+	@FindBy(xpath = "//div[@class='ag-mini-filter ag-labeled ag-label-align-left ag-text-field ag-input-field']")
+	private WebElement UserTypeSearchBar;
+	
 	@FindBy(xpath = "(//div[@class='ag-header-cell ag-focus-managed ag-header-cell-sortable'])[14]")
 	private WebElement CreatedOnColumn;
 
@@ -349,7 +361,7 @@ public class CrewAppUsersPage extends BaseTest{
 
 			TotalExperience.click();
 			TotalExperience.clear();
-			TotalExperience.sendKeys("4");
+			TotalExperience.sendKeys(YrsOfExperience);
 			test.info("Enter Total Experience in yrs");
 
 			Thread.sleep(3000);
@@ -401,10 +413,10 @@ public class CrewAppUsersPage extends BaseTest{
 			test.info("Enter user role 2");
 
 			UserType.click();
-			List<WebElement> userType = driver.findElements(By.xpath("//div[@class='form-group m-form__group']/select[@class=\"form-control\"]/option"));
+			List<WebElement> UserType = driver.findElements(By.xpath("//div[@class='form-group m-form__group']/select[@class=\"form-control\"]/option"));
 			// Iterate through the options
-			for (WebElement option : userType) {
-				if (option.getText().equals("APP")) {
+			for (WebElement option : UserType) {
+				if (option.getText().equals(userType)) {
 					// Use JavaScript to scroll the element into view
 					JavascriptExecutor js = (JavascriptExecutor) driver;
 					js.executeScript("arguments[0].scrollIntoView(true);", option);
@@ -418,7 +430,7 @@ public class CrewAppUsersPage extends BaseTest{
 			List<WebElement> discipline1 = driver.findElements(By.xpath("//div[@class='dropdown-menu open show']/ul[@class=\"dropdown-menu inner\"]/li/a"));
 			// Iterate through the options
 			for (WebElement option : discipline1) {
-				if (option.getText().equals("CBM")) {
+				if (option.getText().equals(Discipline1)) {
 					// Use JavaScript to scroll the element into view
 					JavascriptExecutor js = (JavascriptExecutor) driver;
 					js.executeScript("arguments[0].scrollIntoView(true);", option);
@@ -429,12 +441,12 @@ public class CrewAppUsersPage extends BaseTest{
 			test.info("Enter discipline 1");
 
 			SubDiscipline1aField.click();
-			SubDiscipline1aField.sendKeys("Drilling");
+			SubDiscipline1aField.sendKeys(SubDiscipline1a);
 			List<WebElement> discipline1a = driver.findElements(By.xpath("//li[@class='active']//a[@role='option']"));
 			Thread.sleep(3000);
 			//Iterate through the options
 			for (WebElement option : discipline1a) {
-				if (option.getText().equals("Drilling")) {
+				if (option.getText().equals(SubDiscipline1a)) {
 					// Use JavaScript to scroll the element into view
 					JavascriptExecutor js = (JavascriptExecutor) driver;
 					js.executeScript("arguments[0].scrollIntoView(true);", option);
@@ -450,7 +462,7 @@ public class CrewAppUsersPage extends BaseTest{
 			Thread.sleep(1000);
 			// Iterate through the options
 			for (WebElement option : discipline2) {
-				if (option.getText().equals(Discipline1)) {
+				if (option.getText().equals("CBM")) {
 					// Use JavaScript to scroll the element into view
 					JavascriptExecutor js = (JavascriptExecutor) driver;
 					js.executeScript("arguments[0].scrollIntoView(true);", option);
@@ -877,15 +889,104 @@ public class CrewAppUsersPage extends BaseTest{
 		Thread.sleep(5000);
 	}
 
-	public void yearOfExperienceFilter() {
+	public void yearOfExperienceFilter() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", ResetFiltersButton);
+		Thread.sleep(5000);
 
+		WebElement cell = driver.findElement(By.xpath("//span[@class='ag-header-cell-text'][normalize-space()='Year of Experience']"));
+		js.executeScript("arguments[0].scrollIntoView({inline: 'center'});", cell);
+		Thread.sleep(3000);
+
+		Actions actions = new Actions(driver);
+		actions.moveToElement(YrsOfExperienceColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_yrsOfExperience = getHamburgerIconWithLabel("Year of Experience");
+		HamburgerIcon_yrsOfExperience.click();
+		Thread.sleep(3000);
+
+		YrsOfExperienceFilter.click();
+		YrsOfExperienceFilter.sendKeys(YrsOfExperience);
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
+
+		List<WebElement> yrsOfExpRecords = driver.findElements(By.xpath("//div[@col-id='total_exp' and @role='gridcell']"));
+		for (WebElement record : yrsOfExpRecords) {
+			String actualName = record.getText();
+			Assert.assertTrue(actualName.contains(YrsOfExperience), 
+					"Name does not contain the expected part: " + YrsOfExperience);	
+		}
+		test.info("Years of Experience filter validate.");
+		Thread.sleep(5000);
 	}
 
-	public void subDisciplineFilter() {
+	public void subDisciplineFilter() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", ResetFiltersButton);
+		Thread.sleep(5000);
 
+		WebElement cell = driver.findElement(By.xpath("//span[@class='ag-header-cell-text'][normalize-space()='Sub Discipline']"));
+		js.executeScript("arguments[0].scrollIntoView({inline: 'center'});", cell);
+		Thread.sleep(3000);
+
+		Actions actions = new Actions(driver);
+		actions.moveToElement(SubDisciplineColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_SubDiscipline = getHamburgerIconWithLabel("Sub Discipline");
+		HamburgerIcon_SubDiscipline.click();
+		Thread.sleep(3000);
+
+		SubDisciplineFilter.click();
+		SubDisciplineFilter.sendKeys(SubDiscipline1a);
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
+
+		List<WebElement> subDiscipline1aRecords = driver.findElements(By.xpath("//div[@col-id='sub_discipline_name_user' and @role='gridcell']"));
+		for (WebElement record : subDiscipline1aRecords) {
+			String actualName = record.getText();
+			Assert.assertTrue(actualName.contains(SubDiscipline1a), 
+					"Name does not contain the expected part: " + SubDiscipline1a);	
+		}
+		test.info("Sub-Discipline filter validate.");
+		Thread.sleep(5000);
 	}
 
-	public void userTypeFilter() {
+	public void userTypeFilter() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", ResetFiltersButton);
+		Thread.sleep(5000);
+
+		WebElement subDiscipline = driver.findElement(By.xpath("//span[@class='ag-header-cell-text'][normalize-space()='Sub Discipline']"));
+		js.executeScript("arguments[0].scrollIntoView({inline: 'center'});", subDiscipline);
+		Thread.sleep(2000);
+		WebElement userType = driver.findElement(By.xpath("//span[@class='ag-header-cell-text'][normalize-space()='User Type']"));
+		js.executeScript("arguments[0].scrollIntoView({inline: 'center'});", userType);
+		Thread.sleep(3000);
+
+		Actions actions = new Actions(driver);
+		actions.moveToElement(UserTypeColumn).perform();
+		Thread.sleep(1000);
+		WebElement HamburgerIcon_UserType = getHamburgerIconWithLabel("User Type");
+		HamburgerIcon_UserType.click();
+		Thread.sleep(5000);
+		
+		List<WebElement> checkboxOptions = driver.findElements(By.xpath("//div[@class='ag-input-field-label ag-label ag-checkbox-label']"));
+		for (int i = 0; i < checkboxOptions.size(); i++) {
+            String labelText = checkboxOptions.get(i).getText();
+            if (labelText.equalsIgnoreCase("APP")) {
+            	checkboxOptions.get(i).click();  
+                break;  
+            }
+        	Thread.sleep(2000);
+        }
+		
+		Thread.sleep(2000);
+		ApplyButton.click();
+		Thread.sleep(5000);
+		test.info("User Type filter validate.");
+		Thread.sleep(5000);
 
 	}
 

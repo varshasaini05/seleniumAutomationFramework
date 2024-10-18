@@ -87,9 +87,9 @@ public class CrewAppUserTestcase extends BaseTest {
 			crewAppUser.poolStatusFilter();
 			crewAppUser.countryFilter();
 			crewAppUser.roleFilter();
-			//			crewAppUser.yearOfExperienceFilter();
-			//			crewAppUser.subDisciplineFilter();
-			//			crewAppUser.userTypeFilter();
+			crewAppUser.yearOfExperienceFilter();
+			crewAppUser.subDisciplineFilter();
+			crewAppUser.userTypeFilter();
 			//			crewAppUser.createdOnFilter();
 			//			crewAppUser.updatedOnFilter();
 			//			crewAppUser.holdOnFilter();
